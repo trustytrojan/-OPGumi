@@ -1,0 +1,17 @@
+name: build and release .osk
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      
+      - name: zip to .osk
+        uses: TheDoctor0/zip-release@0.7.6
+        with:
+          filename: "#OPGumi.osk"
+      
+      - name: release .osk
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "#OPGumi.osk"
